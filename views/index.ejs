@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Shorten Your URLs</h1>
+        <form action="/api/short" method="POST">
+            <input type="text" name="url" placeholder="Enter your URL" required>
+            <button type="submit">Shorten</button>
+        </form>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>URL</th>
+                    <th>SHORT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (urls) { %>
+                    <% urls.forEach((url) => { %>
+                        <tr>
+                            <td><%= url.original_url.replace(/^http?:\/\//, '') %></td>
+                            <td><a href="/<%= url.short_url %>" target="_blank"><%= url.short_url %></a></td>
+                        </tr>
+                    <% }) %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
