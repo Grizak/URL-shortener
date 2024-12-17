@@ -24,7 +24,7 @@
                 <% if (urls) { %>
                     <% urls.forEach((url) => { %>
                         <tr>
-                            <td><%= url.original_url.replace(/^https?:\/\/(www\.)?/, '') %></td>
+                            <td><%= url.original_url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '') %></td>
                             <td><a href="/<%= url.short_url %>" target="_blank"><%= url.short_url %></a></td>
                         </tr>
                     <% }) %>
